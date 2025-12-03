@@ -1,37 +1,289 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
-  </style>
-</head>
-<body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集Project</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是LouisaFish：前端工程師新手之路</h1>
-   
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Louisa｜前端學習中・Google Onsite 測試工程師</title>
+    <meta
+      name="description"
+      content="Louisa 是 Google Onsite 手動測試工程師，擅長 Audio/Display、UI 與 a11y 測試，喜歡團隊合作並樂於協助新人，目前正轉職為前端工程師。這是她的個人作品網站。"
+    />
+    <style>
+      /* ============================
+         CSS:BASE
+      ============================ */
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      header {
+        padding: 16px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .nav-container {
+        max-width: 1080px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-links a {
+        margin-left: 16px;
+        font-weight: 500;
+      }
+      main {
+        max-width: 1080px;
+        margin: auto;
+        padding: 0 16px;
+      }
+      section {
+        padding: 60px 0;
+      }
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
-</body>
+      /* ============================
+         CSS:HERO
+      ============================ */
+      .section-hero {
+        text-align: center;
+      }
+      .hero-title {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      .hero-sub {
+        font-size: 1.1rem;
+        margin-bottom: 24px;
+      }
+      .hero-img {
+        border-radius: 12px;
+        margin-top: 24px;
+      }
+
+      /* ============================
+         CSS:ABOUT
+      ============================ */
+      .section-about .about-grid {
+        display: grid;
+        gap: 24px;
+      }
+      .about-box {
+        font-size: 1rem;
+      }
+
+      /* ============================
+         CSS:SKILLS
+      ============================ */
+      .skills-list {
+        display: grid;
+        gap: 12px;
+      }
+      .skill-item {
+        padding: 12px;
+        background: #f7f7f7;
+        border-radius: 8px;
+      }
+
+      /* ============================
+         CSS:PROJECTS
+      ============================ */
+      .projects-grid {
+        display: grid;
+        gap: 24px;
+      }
+      .project-card {
+        border: 1px solid #e4e4e4;
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .project-card h3 {
+        margin-top: 12px;
+      }
+
+      /* ============================
+         CSS:CONTACT
+      ============================ */
+      .contact-links a {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      /* ============================
+         CSS:RWD
+      ============================ */
+      @media (min-width: 768px) {
+        .section-about .about-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-title {
+          font-size: 2.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-container">
+        <strong>Louisa</strong>
+        <nav class="nav-links">
+          <a href="#hero">首頁</a>
+          <a href="#about">關於我</a>
+          <a href="#skills">技能</a>
+          <a href="#projects">作品</a>
+          <a href="#contact">聯絡</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================
+           SECTION:HERO-START
+      ============================ -->
+      <section id="hero" class="section-hero">
+        <h1 class="hero-title">嗨，我是 Louisa！</h1>
+        <p class="hero-sub">Google Onsite 手動測試工程師｜前端工程師轉職中</p>
+        <img
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+          alt="在筆電前進行程式開發的工程師"
+          loading="lazy"
+          class="hero-img"
+        />
+        <!-- 之後會用 Section SDD 來替換整個 HERO 區塊 -->
+      </section>
+      <!-- ============================
+           SECTION:HERO-END
+      ============================ -->
+
+      <!-- ============================
+           SECTION:ABOUT-START
+      ============================ -->
+      <section id="about" class="section-about">
+        <h2>關於我</h2>
+        <div class="about-grid">
+          <div>
+            <img
+              src="https://unsplash.com/photos/rMILC1PIwM0/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MjB8fHNvZnR3YXJlJTIwdGVzdGluZyUyMHRlYW18ZW58MHx8fHwxNzY0Nzc5MTU5fDA&force=true"
+              alt="以筆電進行應用測試與分析的工程師"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-box">
+            <p>
+              我目前是 Google Onsite Vendor 的手動測試工程師，主要負責
+              Audio／Display、Accessibility（a11y）以及 UI 介面測試，並熟悉 adb
+              bugreport 與 Google 內部測試平台操作。
+            </p>
+            <p>
+              我喜歡團隊合作、良好的溝通，也樂於協助新同事上手工作。現在正積極學習前端技術，希望未來能結合使用者體驗、前端開發與測試思維，成為能真正改善使用者產品體驗的工程師！
+            </p>
+            <p>
+              本站為我的前端練習作品，所有區塊都可透過 Section SDD
+              進行動態替換。
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ============================
+           SECTION:ABOUT-END
+      ============================ -->
+
+      <!-- ============================
+           SECTION:SKILLS-START
+      ============================ -->
+      <section id="skills" class="section-skills">
+        <h2>技能</h2>
+        <img
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+          alt="螢幕上顯示程式碼的畫面"
+          loading="lazy"
+        />
+        <div class="skills-list">
+          <div class="skill-item">
+            ▪ 手動測試（Audio / Display / UI / a11y）
+          </div>
+          <div class="skill-item">▪ ADB、Bugreport 分析</div>
+          <div class="skill-item">▪ Test Tracker / TestFlow 使用經驗</div>
+          <div class="skill-item">▪ HTML / CSS / JavaScript（學習中）</div>
+          <div class="skill-item">▪ Git / GitHub（基本）</div>
+          <div class="skill-item">▪ 團隊溝通、協作、協助新人 onboarding</div>
+        </div>
+        <!-- 之後會用 Section SDD 替換整段 SKILLS 區塊 -->
+      </section>
+      <!-- ============================
+           SECTION:SKILLS-END
+      ============================ -->
+
+      <!-- ============================
+           SECTION:PROJECTS-START
+      ============================ -->
+      <section id="projects" class="section-projects">
+        <h2>作品</h2>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="https://unsplash.com/photos/w9jKH8ZnF7A/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzY0Nzc1NTYyfA&force=true"
+              alt="工程師正在進行專案開發的工作場景"
+              loading="lazy"
+            />
+            <h3>個人前端練習專案（示意）</h3>
+            <p>
+              本站即為我使用 HTML / CSS / JS
+              製作的簡易作品。未來我會持續加入更多互動式前端作品，並以 Section
+              SDD 的方式更新內容。
+            </p>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://unsplash.com/photos/58K6WZiwd0g/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzY0Nzc4MTMxfA&force=true"
+              alt="以筆電編寫前端程式碼的情境照片"
+              loading="lazy"
+            />
+            <h3>更多作品即將加入</h3>
+            <p>目前仍在進行前端學習中，之後會呈現更多 UI / JS 互動作品。</p>
+          </div>
+        </div>
+      </section>
+      <!-- ============================
+           SECTION:PROJECTS-END
+      ============================ -->
+
+      <!-- ============================
+           SECTION:CONTACT-START
+      ============================ -->
+      <section id="contact" class="section-contact">
+        <h2>聯絡方式</h2>
+        <p>歡迎與我交流、討論職涯轉職或前端學習！</p>
+
+        <div class="contact-links">
+          <a href="mailto:yourmail@example.com">📧 Email</a>
+          <a href="https://github.com/your-github" target="_blank">💻 GitHub</a>
+          <a href="https://www.linkedin.com/" target="_blank">🔗 LinkedIn</a>
+        </div>
+
+        <!-- 之後會用 Section SDD 替換 CONTACT 區塊 -->
+      </section>
+      <!-- ============================
+           SECTION:CONTACT-END
+      ============================ -->
+    </main>
+  </body>
 </html>
